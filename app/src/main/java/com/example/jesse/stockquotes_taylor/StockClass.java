@@ -3,11 +3,12 @@ package com.example.jesse.stockquotes_taylor;
 /**
  * Created by Jesse on 3/12/2018.
  */
+import android.os.AsyncTask;
 import android.util.Log;
 import java.net.*;
 import java.io.*;
 
-public class StockClass implements Serializable{
+public class StockClass extends AsyncTask<String, Void, String>{
         public String symbol;
         public String lastTradeTime;
         public String lastTradePrice;
@@ -20,57 +21,75 @@ public class StockClass implements Serializable{
             this.symbol = symbol.toUpperCase();
         }
 
-        public void load() throws Exception{
-            URL url = new URL("https://api.iextrading.com/1.0/stock/" + symbol + "/book");
-            URLConnection connection = url.openConnection();
-            InputStreamReader isr = new InputStreamReader((connection.getInputStream()));
-            BufferedReader in = new BufferedReader(isr);
-            String line = in.readLine();
-            while (in.readLine() != null);
 
-            in.close();
+    @Override
+    protected String doInBackground(String... strings) {
+            try {
+                URL url = new URL("https://api.iextrading.com/1.0/stock/" + symbol + "/book");
+                URLConnection connection = url.openConnection();
+                InputStreamReader isr = new InputStreamReader((connection.getInputStream()));
+                BufferedReader in = new BufferedReader(isr);
+                String line = in.readLine();
+                while (in.readLine() != null) ;
 
-            if (line != null && line.length() > 0) {
-                String lineRegex;
-                String[] values = line.split("[,:]");
+                in.close();
 
-                name = values[4];
-                name = name.replace('"', ' ');
-                change = values[47] + "  -  " + values[49] + "%";
-                range = values[71] + "  -  " + values[69];
-                range2 = values[35];
-                lastTradeTime = values[28] + ", " + values[29];
-                lastTradeTime = lastTradeTime.replace('"', ' ');
-                lastTradePrice = values[24];
-                lastTradePrice = lastTradePrice.replace('"', ' ');
+                if (line != null && line.length() > 0) {
+                    String lineRegex;
+                    String[] values = line.split("[,:]");
 
-                Log.i(name, " is the name");
-                Log.i(range, " is the range");
-                Log.i(range2, " is the range2");
-                Log.i(change, " is the change");
+                    name = values[4];
+                    name = name.replace('"', ' ');
+                    change = values[47] + "  -  " + values[49] + "%";
+                    range = values[71] + "  -  " + values[69];
+                    range2 = values[35];
+                    lastTradeTime = values[28] + ", " + values[29];
+                    lastTradeTime = lastTradeTime.replace('"', ' ');
+                    lastTradePrice = values[24];
+                    lastTradePrice = lastTradePrice.replace('"', ' ');
+
+
+                    Log.i(name, " is the name");
+                    Log.i(range, " is the range");
+                    Log.i(range2, " is the range2");
+                    Log.i(change, " is the change");
+                }
+
             }
-        }
-        public String getLastTradeTime() {
-            return lastTradeTime;
-        }
 
-        public String getLastTradePrice() {
-            return lastTradePrice;
-        }
+            catch(Exception e) {
 
-        public String getChange() {
-            return change;
-        }
+            }
+        return null;
+    }
 
-        public String getRange() {
-            return range;
-        }
+    public String getLastTradeTime() {
+        doInBackground();
+        return lastTradeTime;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public String getLastTradePrice() {
+        doInBackground();
+        return lastTradePrice;
+    }
 
-        public String getSymbol() {
-            return symbol;
-        }
+    public String getChange() {
+        doInBackground();
+        return change;
+    }
+
+    public String getRange() {
+        doInBackground();
+        return range;
+    }
+
+    public String getName() {
+        doInBackground();
+        return name;
+    }
+
+    public String getSymbol() {
+        doInBackground();
+        return symbol;
+    }
 }

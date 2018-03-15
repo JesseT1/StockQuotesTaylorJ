@@ -85,10 +85,12 @@
         android:layout_alignBottom="@+id/range"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/changeLabel1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/changeLabel"
         app:layout_constraintTop_toBottomOf="@+id/tradeTime"
         app:layout_constraintVertical_bias="1.0" />
@@ -113,11 +115,13 @@
         android:layout_width="251dp"
         android:layout_height="38dp"
         android:layout_alignTop="@+id/nameLabel"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/changeLabel"
         android:text=""
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nameLabel"
         app:layout_constraintTop_toBottomOf="@+id/symbol" />
 
@@ -157,10 +161,12 @@
         android:layout_height="33dp"
         android:layout_alignBaseline="@+id/tradePriceLabel"
         android:layout_alignBottom="@+id/tradePriceLabel"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/tradePriceLabel"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tradePriceLabel"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -199,10 +205,12 @@
         android:layout_width="163dp"
         android:layout_height="31dp"
         android:layout_below="@+id/changeLabel"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/tradeTimeLabel"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/changeLabel1"
         app:layout_constraintTop_toBottomOf="@+id/change" />
 
