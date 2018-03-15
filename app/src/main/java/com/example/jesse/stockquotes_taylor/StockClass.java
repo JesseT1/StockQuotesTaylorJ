@@ -23,7 +23,7 @@ public class StockClass extends AsyncTask<String, Void, String>{
 
 
     @Override
-    protected String doInBackground(String... strings) {
+        protected String doInBackground (String...strings){
             try {
                 URL url = new URL("https://api.iextrading.com/1.0/stock/" + symbol + "/book");
                 URLConnection connection = url.openConnection();
@@ -40,10 +40,10 @@ public class StockClass extends AsyncTask<String, Void, String>{
 
                     name = values[4];
                     name = name.replace('"', ' ');
-                    change = values[47] + "  -  " + values[49] + "%";
-                    range = values[71] + "  -  " + values[69];
+                    change = values[46] + "  -  " + values[48] + "%";
+                    range = values[72] + "  -  " + values[70];
                     range2 = values[35];
-                    lastTradeTime = values[28] + ", " + values[29];
+                    lastTradeTime = values[28] + ":" + values[29] + ":" + values[30];
                     lastTradeTime = lastTradeTime.replace('"', ' ');
                     lastTradePrice = values[24];
                     lastTradePrice = lastTradePrice.replace('"', ' ');
@@ -55,36 +55,34 @@ public class StockClass extends AsyncTask<String, Void, String>{
                     Log.i(change, " is the change");
                 }
 
-            }
-
-            catch(Exception e) {
+            } catch (Exception e) {
 
             }
-        return null;
-    }
+            return null;
+        }
 
     public String getLastTradeTime() {
-        doInBackground();
+        //doInBackground();
         return lastTradeTime;
     }
 
     public String getLastTradePrice() {
-        doInBackground();
+        //doInBackground();
         return lastTradePrice;
     }
 
     public String getChange() {
-        doInBackground();
+        //doInBackground();
         return change;
     }
 
     public String getRange() {
-        doInBackground();
+        //doInBackground();
         return range;
     }
 
     public String getName() {
-        doInBackground();
+        //doInBackground();
         return name;
     }
 

@@ -1,14 +1,15 @@
 package com.example.jesse.stockquotes_taylor;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import java.io.IOException;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 public class MainActivity extends AppCompatActivity{
     String inp;
@@ -75,11 +76,30 @@ public class MainActivity extends AppCompatActivity{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View view){
-                stockQuote();
+                try {
+                    stockQuote();
+                }
+                catch(Exception e){
+                    Toast.makeText(context, "This is not a valid symbol", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    try {
+                        stockQuote();
+                    }
+                    catch(Exception e){
+                        Toast.makeText(context, "This is not a valid symbol", Toast.LENGTH_LONG).show();
+                    }
+                }
+                return false;
             }
         });
     }
-    public void stockQuote(){
+    public void stockQuote() throws IOException{
 
         inp = editText.getText().toString();
 
@@ -87,40 +107,35 @@ public class MainActivity extends AppCompatActivity{
 
             stock = new StockClass(inp);
 
-            new Thread() {
+            new Thread(){
                 public void run() {
                     try {
                         stock.execute();
                     }
-
                     catch (Exception e) {
+                        invalidSymbol = true;
+                        Toast.makeText(context, "This is not a valid symbol", Toast.LENGTH_LONG).show();
                     }
+                        symbol = stock.getSymbol();
+                        name = stock.getName();
+                        tradePrice = stock.getLastTradePrice();
+                        tradeTime = stock.getLastTradeTime();
+                        change = stock.getChange();
+                        range = stock.getRange();
 
-                    symbol = stock.getSymbol();
-                    name = stock.getName();
-                    tradePrice = stock.getLastTradePrice();
-                    tradeTime = stock.getLastTradeTime();
-                    change = stock.getChange();
-                    range = stock.getRange();
-
-                    symbolTextView.setText(symbol);
-                    nameTextView.setText(name);
-                    tradePriceTextView.setText(tradePrice);
-                    tradeTimeTextView.setText(tradeTime);
-                    changeTextView.setText(change);
-                    rangeTextView.setText(range);
-                }
+                        symbolTextView.setText(symbol);
+                        nameTextView.setText(name);
+                        tradePriceTextView.setText(tradePrice);
+                        tradeTimeTextView.setText(tradeTime);
+                        changeTextView.setText(change);
+                        rangeTextView.setText(range);
+                    }
             }
                     .start();
         }
-        else{
-            invalidSymbol = true;
-        }
-
-        if(invalidSymbol == true) {
-            Toast.makeText(context, "Not a valid stock", Toast.LENGTH_LONG).show();
+        if(name == null && invalidSymbol == true) {
+            Toast.makeText(context, "This is not a valid symbol", Toast.LENGTH_LONG).show();
             invalidSymbol=false;
-
         }
     }
 
