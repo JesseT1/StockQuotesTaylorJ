@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorButtonNormal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@style/AppTheme"
+    tools:context="com.example.jesse.stockquotes_taylor.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorAccent"
+        android:onClick="onClick"
+        android:text="RETRIEVE STOCK QUOTE"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/symbolLabel"
+        android:layout_below="@+id/symbolLabel"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="Name:"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintTop_toBottomOf="@+id/symbolLabel"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <TextView
+        android:id="@+id/symbol"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/symbolLabel"
+        android:layout_alignBottom="@+id/symbolLabel"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/symbolLabel"
+        android:text=""
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/symbolLabel"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/changeLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/changeLabel"
+        android:layout_alignBottom="@+id/changeLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="52 Week Range:"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/changeLabel" />
+
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="245dp"
+
+        android:layout_height="33dp"
+        android:layout_alignBaseline="@+id/range"
+        android:layout_alignBottom="@+id/range"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="16dp"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/changeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tradeTime" />
+
+    <TextView
+        android:id="@+id/changeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tradeTimeLabel"
+        android:layout_marginRight="236dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="Change:"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/tradeTimeLabel" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="251dp"
+        android:layout_height="38dp"
+        android:layout_alignTop="@+id/nameLabel"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/changeLabel"
+        android:text=""
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/nameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/symbol" />
+
+    <TextView
+        android:id="@+id/tradeTime"
+        android:layout_width="148dp"
+        android:layout_height="41dp"
+        android:layout_alignBaseline="@+id/tradeTimeLabel"
+        android:layout_alignBottom="@+id/tradeTimeLabel"
+        android:layout_marginRight="16dp"
+        android:layout_toEndOf="@+id/tradePriceLabel"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tradeTimeLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/symbolLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="Symbol:"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/tradePrice"
+        android:layout_width="136dp"
+        android:layout_height="33dp"
+        android:layout_alignBaseline="@+id/tradePriceLabel"
+        android:layout_alignBottom="@+id/tradePriceLabel"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/tradePriceLabel"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tradePriceLabel"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/tradePriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/nameLabel"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="Last Trade Price:"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
+
+    <TextView
+        android:id="@+id/tradeTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tradePriceLabel"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        android:text="Last Trade Time:"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014" />
+
+    <TextView
+        android:id="@+id/range"
+        android:layout_width="163dp"
+        android:layout_height="31dp"
+        android:layout_below="@+id/changeLabel"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/tradeTimeLabel"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/changeLabel1"
+        app:layout_constraintTop_toBottomOf="@+id/change" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="229dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="?android:attr/actionModeBackground"
+        android:ems="10"
+        android:hint="ENTER STOCK SYMBOL"
+        android:inputType="textPersonName"
+        android:paddingBottom="6dip"
+        android:paddingLeft="10dip"
+        android:paddingStart="6dip"
+        android:paddingTop="10dip"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="30sp"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+</android.support.constraint.ConstraintLayout>
